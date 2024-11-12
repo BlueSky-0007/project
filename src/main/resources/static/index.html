@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie World</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #fdf0d5; color: #333; text-align: center; padding: 20px;">
+
+    <h1 style="color: #d2691e;">Welcome to Foodie World</h1>
+    <p style="font-size: 1.2em; color: #555;">A project made by a foodie, for foodies!</p>
+
+    <button onclick="showMenu()" style="background-color: #ff7f50; color: white; padding: 10px 20px; font-size: 1em; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px;">
+        View Menu
+    </button>
+
+    <div id="menu-days" style="display: none; margin-top: 20px;">
+        <h2 style="color: #d2691e;">Select a Day</h2>
+        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <button onclick="showMeals('monday')" style="padding: 10px; background-color: #ffb347; color: white; border: none; border-radius: 5px; cursor: pointer;">Monday</button>
+            <button onclick="showMeals('tuesday')" style="padding: 10px; background-color: #ffb347; color: white; border: none; border-radius: 5px; cursor: pointer;">Tuesday</button>
+            <button onclick="showMeals('wednesday')" style="padding: 10px; background-color: #ffb347; color: white; border: none; border-radius: 5px; cursor: pointer;">Wednesday</button>
+            <button onclick="showMeals('thursday')" style="padding: 10px; background-color: #ffb347; color: white; border: none; border-radius: 5px; cursor: pointer;">Thursday</button>
+            <button onclick="showMeals('friday')" style="padding: 10px; background-color: #ffb347; color: white; border: none; border-radius: 5px; cursor: pointer;">Friday</button>
+        </div>
+    </div>
+
+    <div id="meals" style="display: none; margin-top: 30px;">
+        <h2 id="selected-day" style="color: #d2691e;"></h2>
+        <div style="text-align: left; display: inline-block; max-width: 400px; margin-top: 20px;">
+            <p style="background-color: #fff8e1; padding: 10px; border-radius: 5px;">
+                <strong>Breakfast:</strong> <span id="breakfast"></span>
+            </p>
+            <p style="background-color: #fff8e1; padding: 10px; border-radius: 5px;">
+                <strong>Lunch:</strong> <span id="lunch"></span>
+            </p>
+            <p style="background-color: #fff8e1; padding: 10px; border-radius: 5px;">
+                <strong>Snacks:</strong> <span id="snacks"></span>
+            </p>
+            <p style="background-color: #fff8e1; padding: 10px; border-radius: 5px;">
+                <strong>Dinner:</strong> <span id="dinner"></span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showMenu() {
+            document.getElementById('menu-days').style.display = 'block';
+            document.getElementById('meals').style.display = 'none';
+        }
+
+        function showMeals(day) {
+            const mealPlans = {
+                monday: {
+                    breakfast: "Pancakes with maple syrup",
+                    lunch: "Grilled chicken salad",
+                    snacks: "Fruit smoothie",
+                    dinner: "Spaghetti with marinara sauce"
+                },
+                tuesday: {
+                    breakfast: "Avocado toast",
+                    lunch: "Vegetable stir-fry with tofu",
+                    snacks: "Mixed nuts",
+                    dinner: "Lentil soup and garlic bread"
+                },
+                wednesday: {
+                    breakfast: "Greek yogurt with berries",
+                    lunch: "Turkey sandwich with salad",
+                    snacks: "Hummus with carrots",
+                    dinner: "Chicken curry with rice"
+                },
+                thursday: {
+                    breakfast: "Smoothie bowl with granola",
+                    lunch: "Pasta primavera",
+                    snacks: "Apple slices with almond butter",
+                    dinner: "Grilled salmon with quinoa"
+                },
+                friday: {
+                    breakfast: "Oatmeal with bananas and honey",
+                    lunch: "Burrito bowl with beans and veggies",
+                    snacks: "Dark chocolate squares",
+                    dinner: "Pizza with mixed veggies"
+                }
+            };
+
+            document.getElementById('selected-day').innerText = `Meals for ${capitalize(day)}`;
+            document.getElementById('breakfast').innerText = mealPlans[day].breakfast;
+            document.getElementById('lunch').innerText = mealPlans[day].lunch;
+            document.getElementById('snacks').innerText = mealPlans[day].snacks;
+            document.getElementById('dinner').innerText = mealPlans[day].dinner;
+
+            document.getElementById('meals').style.display = 'block';
+        }
+
+        function capitalize(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }
+    </script>
+
+</body>
+</html>
